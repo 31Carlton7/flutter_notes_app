@@ -8,8 +8,10 @@ A clean and modern note taking app built with Flutter.
 - Edit notes: Edit notes that were previously created.
 - Lockable notes: Lock notes with a password.
 - Pinnable notes: Pin notes to the top of the list.
-- Desktop Version (WIP): Supports desktop (MacOS currently, other platforms have not been tested as of now).
 - User stats: Stats for the user's notes such as total notes, words written etc.
+- Search notes (FIX NEEDED): Filter out notes with the search bar.
+- Desktop Version (WIP): Supports desktop (MacOS currently, other platforms have not been tested as of now).
+
 
 ## Dependencies
 
@@ -21,7 +23,6 @@ A clean and modern note taking app built with Flutter.
 
 ## TODO
 
-- [ ] Add search bar and functionality
 - [ ] Add Notebooks to store notes
 - [ ] Add Firebase
   - [ ] GitHub Authentication
