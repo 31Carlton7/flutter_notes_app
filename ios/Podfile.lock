@@ -1,0 +1,35 @@
+PODS:
+  - Flutter (1.0.0)
+  - keyboard_visibility (0.5.0):
+    - Flutter
+    - Reachability
+  - Reachability (3.2)
+  - shared_preferences (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - keyboard_visibility (from `.symlinks/plugins/keyboard_visibility/ios`)
+  - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
+
+SPEC REPOS:
+  trunk:
+    - Reachability
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  keyboard_visibility:
+    :path: ".symlinks/plugins/keyboard_visibility/ios"
+  shared_preferences:
+    :path: ".symlinks/plugins/shared_preferences/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  keyboard_visibility: 96a24de806fe6823c3ad956c01ba2ec6d056616f
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
+
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+
+COCOAPODS: 1.10.1
