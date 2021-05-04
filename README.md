@@ -1,6 +1,6 @@
 # Notes App
 
-A clean and modern note taking app built with Flutter.
+A clean and modern note taking app built with Flutter. Be sure to leave a star 🌟
 
 ## Features
 
