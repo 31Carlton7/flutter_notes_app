@@ -25,11 +25,14 @@ A clean, simple and modern note taking app built with Flutter. Be sure to leave 
 
 - [ ] Add Notebooks to store notes
 - [ ] Make app responsive
-- [ ] Fix Desktop UI
 - [ ] Add Firebase
   - [ ] GitHub Authentication
   - [ ] Google Authentication
   - [ ] Analytics
+
+## Fixes
+- [ ] Fix Desktop UI
+- [ ] Fix NavBar
 
 ## Socials
 
