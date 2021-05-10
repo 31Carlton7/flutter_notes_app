@@ -18,6 +18,7 @@ class _NoteCreationViewState extends State<NoteCreationView> {
   TextEditingController _passwordController;
 
   final FocusNode _contentFocus = FocusNode();
+  final FocusNode _passwordFocus = FocusNode();
 
   void newNoteFunction() {
     if (widget.note.id != null) {
@@ -73,15 +74,16 @@ class _NoteCreationViewState extends State<NoteCreationView> {
               style: Theme.of(context)
                   .textTheme
                   .headline5
-                  .copyWith(color: cantonGrey[600]),
+                  .copyWith(color: CantonColors.textTertiary),
             ),
             CantonHeaderButton(
               icon: Icon(
                 FeatherIcons.moreVertical,
-                color: cantonGrey[600],
+                color: CantonColors.textTertiary,
                 size: 27.0,
               ),
               onPressed: () {
+                _passwordFocus.requestFocus();
                 _noteConfigurations(_passwordController);
               },
             ),
@@ -145,9 +147,7 @@ class _NoteCreationViewState extends State<NoteCreationView> {
             content: _contentController.text,
             pinned: widget.note.pinned ?? false,
             locked: widget.note.locked ?? false,
-            password: !['', null].contains(_passwordController.text)
-                ? _passwordController.text
-                : '',
+            password: widget.note.password ?? '',
             creationDate: DateTime.now(),
             lastEditDate: DateTime.now(),
           ),
@@ -242,6 +242,7 @@ class _NoteCreationViewState extends State<NoteCreationView> {
                                         isTextFormField: true,
                                         isTextInputTwo: true,
                                         controller: _passwordController,
+                                        focusNode: _passwordFocus,
                                         textInputType: TextInputType.number,
                                       ),
                                       SizedBox(height: 10),
@@ -297,10 +298,16 @@ class _NoteCreationViewState extends State<NoteCreationView> {
                                                         false;
                                               });
                                               Navigator.pop(context);
-                                              print(_passwordController.text);
                                             },
                                           ),
                                         ],
+                                      ),
+                                      const SizedBox(height: 30),
+                                      Text(
+                                        'To remove the password Lock, simply delete the text in the text field.',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline6,
                                       ),
                                     ],
                                   ),
@@ -328,7 +335,10 @@ class _NoteCreationViewState extends State<NoteCreationView> {
                             textColor: CantonColors.bgPrimary,
                             containerWidth:
                                 MediaQuery.of(context).size.width / 2 - 54,
-                            onPressed: () => Navigator.pop(context),
+                            onPressed: () {
+                              widget.note.password = _passwordController.text;
+                              Navigator.pop(context);
+                            },
                           ),
                         ],
                       ),

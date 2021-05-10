@@ -3,7 +3,7 @@ import 'package:notes_app/src/config/constants.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:notes_app/src/config/nav_bar.dart';
 
-void main() {
+Future<void> main() async {
   runApp(ProviderScope(child: MyApp()));
 }
 

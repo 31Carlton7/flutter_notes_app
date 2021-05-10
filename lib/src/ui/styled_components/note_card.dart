@@ -4,8 +4,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:notes_app/domain/note_repository/note_repository.dart';
 import 'package:notes_app/src/models/note.dart';
+import 'package:notes_app/src/ui/functions/note_card_functions/delete_note_action.dart';
+import 'package:notes_app/src/ui/functions/note_card_functions/pin_note_action.dart';
+import 'package:notes_app/src/ui/functions/note_card_functions/unlock_note.dart';
 import 'package:notes_app/src/ui/providers/note_provider.dart';
-import 'package:notes_app/src/ui/views/note_creation_view.dart';
 
 class NoteCard extends ConsumerWidget {
   final Note note;
@@ -16,113 +18,27 @@ class NoteCard extends ConsumerWidget {
     final repo = watch(noteProvider.notifier);
 
     return GestureDetector(
-      onTap: () {
-        TextEditingController _passwordController = TextEditingController();
-        bool _incorrect = false;
-        if (note.locked) {
-          showDialog(
-            context: context,
-            builder: (_) => AlertDialog(
-              shape: SquircleBorder(radius: 55),
-              title: Text(
-                'Configure Lock',
-                style: Theme.of(context).textTheme.headline4,
-              ),
-              content: StatefulBuilder(
-                builder: (context, setState) => Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Enter the password for this note',
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline6
-                          .copyWith(color: CantonColors.textSecondary),
-                    ),
-                    SizedBox(height: 7),
-                    CantonTextInput(
-                      obscureText: true,
-                      isTextFormField: true,
-                      isTextInputTwo: true,
-                      controller: _passwordController,
-                      textInputType: TextInputType.number,
-                      onChanged: (_) => print(_),
-                    ),
-                    SizedBox(height: 10),
-                    _incorrect
-                        ? Text(
-                            'Incorrect Password',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText1
-                                .copyWith(color: CantonColors.textDanger),
-                          )
-                        : Container(),
-                    SizedBox(height: 10),
-                    Row(
-                      children: [
-                        CantonPrimaryButton(
-                          buttonText: 'Cancel',
-                          containerColor: CantonColors.bgDanger,
-                          textColor: CantonColors.textDanger,
-                          containerWidth:
-                              MediaQuery.of(context).size.width / 2 - 70,
-                          onPressed: () {
-                            _passwordController = TextEditingController();
-                            Navigator.pop(context);
-                          },
-                        ),
-                        Spacer(),
-                        CantonPrimaryButton(
-                          buttonText: 'Done',
-                          containerColor: CantonColors.bgInverse,
-                          textColor: CantonColors.bgPrimary,
-                          containerWidth:
-                              MediaQuery.of(context).size.width / 2 - 70,
-                          onPressed: () {
-                            if (_passwordController.text == note.password) {
-                              _incorrect = false;
-                              Navigator.of(context).pop();
-                              CantonMethods.viewTransition(
-                                context,
-                                NoteCreationView(note: note),
-                              );
-                            } else {
-                              setState(() {
-                                _incorrect = true;
-                              });
-                            }
-                          },
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          );
-        } else {
-          CantonMethods.viewTransition(
-            context,
-            NoteCreationView(note: note),
-          );
-        }
-      },
+      onTap: () => UnlockNote(context, note),
       child: Slidable(
         key: UniqueKey(),
         actionPane: SlidableDrawerActionPane(),
         actionExtentRatio: 0.25,
         dismissal: SlidableDismissal(
           child: SlidableDrawerDismissal(),
+          dismissThresholds: <SlideActionType, double>{
+            SlideActionType.primary: 1.0
+          },
           onDismissed: (direction) {
-            if (direction == SlideActionType.secondary) repo.removeNote(note);
+            if (direction == SlideActionType.secondary)
+              DeleteNoteAction(repo, note);
+            if (direction == SlideActionType.primary) PinNoteAction(repo, note);
           },
         ),
-        actions: [
-          _pinNoteSlidableAction(repo),
+        actions: <Widget>[
+          PinNoteAction(repo, note),
         ],
         secondaryActions: <Widget>[
-          _deleteNoteSlidableAction(repo),
+          DeleteNoteAction(repo, note),
         ],
         child: Card(
           elevation: 0,
@@ -130,62 +46,6 @@ class NoteCard extends ConsumerWidget {
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 15),
             child: _body(context),
           ),
-        ),
-      ),
-    );
-  }
-
-  Future<Widget> unlockNoteBottomSheet(BuildContext context) {
-    return showModalBottomSheet(
-        context: context,
-        isScrollControlled: true,
-        backgroundColor: cantonGrey[100],
-        elevation: 0,
-        useRootNavigator: true,
-        shape: SquircleBorder(radius: 55),
-        builder: (context) {
-          return;
-        });
-  }
-
-  Widget _deleteNoteSlidableAction(NoteRepository repo) {
-    return Container(
-      margin: EdgeInsets.only(top: 5, bottom: 5, left: 5),
-      child: Material(
-        color: CantonColors.bgDangerInverse,
-        shape: SquircleBorder(
-          radius: 35,
-        ),
-        child: SlideAction(
-            child: Icon(
-              FeatherIcons.trash,
-              size: 27,
-              color: CantonColors.gray[100],
-            ),
-            onTap: () => repo.removeNote(note)),
-      ),
-    );
-  }
-
-  Widget _pinNoteSlidableAction(NoteRepository repo) {
-    return Container(
-      margin: EdgeInsets.only(top: 5, bottom: 5),
-      child: Material(
-        color: CantonColors.yellow,
-        shape: SquircleBorder(
-          radius: 35,
-        ),
-        child: SlideAction(
-          child: Icon(
-            note.pinned
-                ? CupertinoIcons.pin_slash_fill
-                : CupertinoIcons.pin_fill,
-            size: 27,
-            color: CantonColors.gray[100],
-          ),
-          onTap: () {
-            repo.updateNote(note: note, pinned: !note.pinned);
-          },
         ),
       ),
     );
@@ -223,23 +83,21 @@ class NoteCard extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                [null, false].contains(note.locked)
-                    ? noteTitleText(contentWordList)
-                    : 'Locked',
+                noteTitleText(contentWordList),
                 style: Theme.of(context)
                     .textTheme
                     .headline6
-                    .copyWith(color: cantonGrey[900]),
+                    .copyWith(color: CantonColors.textPrimary),
               ),
               const SizedBox(height: 7),
               Text(
                 [null, false].contains(note.locked)
                     ? noteContentText(contentWordList)
-                    : 'Tap to Unlock',
+                    : 'Locked Note',
                 style: Theme.of(context)
                     .textTheme
                     .bodyText1
-                    .copyWith(color: cantonGrey[900]),
+                    .copyWith(color: CantonColors.textPrimary),
               ),
             ],
           ),
@@ -251,7 +109,7 @@ class NoteCard extends ConsumerWidget {
           style: Theme.of(context)
               .textTheme
               .bodyText2
-              .copyWith(color: cantonGrey[600]),
+              .copyWith(color: CantonColors.textTertiary),
         ),
       ],
     );

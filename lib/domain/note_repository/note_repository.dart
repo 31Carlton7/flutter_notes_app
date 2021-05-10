@@ -61,13 +61,14 @@ class NoteRepository extends StateNotifier<List<Note>> {
     List<String> savedNoteList = prefs.getStringList('note_list');
     state =
         savedNoteList.map((note) => Note.fromMap(json.decode(note))).toList();
-    print(savedNoteList);
   }
 
   /// Sorts note list by dateOfLastEdit. The [Note] with the most recent dateOfLastEdit
   /// will be the first [Note] in the note list.
-  void sortList() {
-    state..sort((a, b) => b.lastEditDate.compareTo(a.lastEditDate));
+  Future<void> sortList() async {
+    state = [
+      ...state..sort((a, b) => a.lastEditDate.compareTo(b.lastEditDate))
+    ];
   }
 
   /// Creates custom string for dateTime elements.

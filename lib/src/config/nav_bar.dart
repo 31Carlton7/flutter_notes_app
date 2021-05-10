@@ -23,7 +23,7 @@ class _CurrentScreenState extends State<CurrentScreen> {
         if (index == 0) {
           return Theme.of(context).primaryColor;
         } else {
-          return cantonGrey[600];
+          return CantonColors.textTertiary;
         }
       }
 
@@ -31,7 +31,7 @@ class _CurrentScreenState extends State<CurrentScreen> {
         if (index == 1) {
           return Theme.of(context).primaryColor;
         } else {
-          return cantonGrey[600];
+          return CantonColors.textTertiary;
         }
       }
 

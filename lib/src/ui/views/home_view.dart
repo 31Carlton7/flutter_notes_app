@@ -114,8 +114,9 @@ class _HomeViewState extends State<HomeView> {
     }
     return Expanded(
       child: noteList.length > 0
-          ? ListView(
-              children: notes,
+          ? ListView.builder(
+              itemCount: notes.length,
+              itemBuilder: (context, index) => notes[index],
             )
           : Center(
               child: Text(
