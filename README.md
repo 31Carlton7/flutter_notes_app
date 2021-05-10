@@ -34,6 +34,7 @@ A clean, simple and modern note taking app built with Flutter. Be sure to leave 
 ## Fixes
 - [ ] Fix NavBar
 - [ ] Fix sortList() method
+- [ ] Fix Create Password before creating note glitch
 
 ## Screenshots
 <div>
