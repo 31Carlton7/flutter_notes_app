@@ -32,7 +32,6 @@ A clean, simple and modern note taking app built with Flutter. Be sure to leave 
   - [ ] Analytics
 
 ## Fixes
-- [ ] Fix Desktop UI
 - [ ] Fix NavBar
 - [ ] Fix sortList() method
 
