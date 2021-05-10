@@ -1,6 +1,6 @@
 # Notes App
 
-A clean and modern note taking app built with Flutter.
+A clean, simple and modern note taking app built with Flutter. Be sure to leave a star 🌟
 
 ## Features
 
@@ -24,10 +24,17 @@ A clean and modern note taking app built with Flutter.
 ## TODO
 
 - [ ] Add Notebooks to store notes
+- [ ] Add Animations
+- [ ] Make app responsive
 - [ ] Add Firebase
   - [ ] GitHub Authentication
   - [ ] Google Authentication
   - [ ] Analytics
+
+## Fixes
+- [ ] Fix Desktop UI
+- [ ] Fix NavBar
+- [ ] Fix sortList() method
 
 ## Socials
 
