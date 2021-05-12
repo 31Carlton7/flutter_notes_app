@@ -6,7 +6,7 @@ A clean, simple and modern note taking app built with Flutter. Be sure to leave 
 
 - Create notes: Create notes that store locally to device.
 - Edit notes: Edit notes that were previously created.
-- Lockable notes: Lock notes with a password.
+- Lockable notes (WIP): Lock notes with a password.
 - Pinnable notes: Pin notes to the top of the list.
 - User stats: Stats for the user's notes such as total notes, words written etc.
 - Search notes (FIX NEEDED): Filter out notes with the search bar.
@@ -33,10 +33,8 @@ A clean, simple and modern note taking app built with Flutter. Be sure to leave 
   - [ ] Analytics
 
 ## Fixes
-- [ ] Fix NavBar
 - [ ] Fix sortList() method
 - [ ] Fix Create Password before creating note glitch
-![ - 2021-05-11 at 21 50 40]()
 
 ## Screenshots
 <div>
