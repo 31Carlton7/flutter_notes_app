@@ -67,7 +67,7 @@ class NoteRepository extends StateNotifier<List<Note>> {
   /// will be the first [Note] in the note list.
   Future<void> sortList() async {
     state = [
-      ...state..sort((a, b) => a.lastEditDate.compareTo(b.lastEditDate))
+      ...state..sort((a, b) => b.lastEditDate.compareTo(a.lastEditDate))
     ];
   }
 
