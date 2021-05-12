@@ -66,11 +66,19 @@ class _NoteCreationViewState extends State<NoteCreationView> {
             CantonBackButton(
               onPressed: () => _addNoteFunction(watch),
             ),
+            // Text(
+            //   'Saved ' +
+            //       NoteRepository.dateTimeString(
+            //         widget.note.lastEditDate ?? DateTime.now(),
+            //       ).substring(6),
+            //   style: Theme.of(context)
+            //       .textTheme
+            //       .headline5
+            //       .copyWith(color: CantonColors.textTertiary),
+            // ),
             Text(
-              'Saved ' +
-                  NoteRepository.dateTimeString(
-                    widget.note.lastEditDate ?? DateTime.now(),
-                  ).substring(6),
+              NoteRepository.dateTimeString(widget.note.creationDate)
+                  .substring(6),
               style: Theme.of(context)
                   .textTheme
                   .headline5
@@ -113,9 +121,7 @@ class _NoteCreationViewState extends State<NoteCreationView> {
                 lastEditDate: DateTime.now(),
               );
             },
-            style: Theme.of(context).textTheme.bodyText1.copyWith(
-                  color: CantonColors.textPrimary,
-                ),
+            style: Theme.of(context).textTheme.headline6,
           ),
         );
       },

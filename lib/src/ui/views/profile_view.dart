@@ -15,8 +15,10 @@ class ProfileView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        _header(context),
+        SizedBox(height: 10),
         _profile(context),
-        SizedBox(height: 100),
+        SizedBox(height: 30),
         _totalNotesCreated(context),
         SizedBox(height: 7),
         _totalWordsTyped(context),
@@ -24,6 +26,26 @@ class ProfileView extends StatelessWidget {
         _totalCharactersTyped(context),
       ],
     );
+  }
+
+  Widget _header(BuildContext context) {
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+      CantonBackButton(
+        isClear: true,
+      ),
+      Text(
+        'Profile',
+        textAlign: TextAlign.center,
+        style: Theme.of(context).textTheme.headline4.copyWith(
+              color: Theme.of(context).primaryColor,
+            ),
+      ),
+      CantonHeaderButton(
+        backgroundColor: CantonColors.transparent,
+        icon: Container(),
+        onPressed: () {},
+      ),
+    ]);
   }
 
   Widget _profile(BuildContext context) {

@@ -4,6 +4,7 @@ import 'package:notes_app/src/ui/providers/note_provider.dart';
 import 'package:notes_app/src/ui/styled_components/note_card.dart';
 import 'package:notes_app/src/ui/views/note_creation_view.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:notes_app/src/ui/views/profile_view.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -53,11 +54,22 @@ class _HomeViewState extends State<HomeView> {
                   ),
             ),
             Spacer(),
+            CantonHeaderButton(
+              icon: IconlyIcon(
+                IconlyBold.Profile,
+                color: CantonColors.iconTertiary,
+                size: 27,
+              ),
+              onPressed: () => CantonMethods.viewTransition(
+                context,
+                ProfileView(),
+              ),
+            ),
             SizedBox(width: 10),
             CantonHeaderButton(
               icon: Icon(
                 FeatherIcons.plus,
-                color: cantonGrey[100],
+                color: CantonColors.bgPrimary,
                 size: 27,
               ),
               backgroundColor: Theme.of(context).primaryColor,
