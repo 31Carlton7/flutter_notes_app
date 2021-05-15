@@ -66,19 +66,10 @@ class _NoteCreationViewState extends State<NoteCreationView> {
             CantonBackButton(
               onPressed: () => _addNoteFunction(watch),
             ),
-            // Text(
-            //   'Saved ' +
-            //       NoteRepository.dateTimeString(
-            //         widget.note.lastEditDate ?? DateTime.now(),
-            //       ).substring(6),
-            //   style: Theme.of(context)
-            //       .textTheme
-            //       .headline5
-            //       .copyWith(color: CantonColors.textTertiary),
-            // ),
             Text(
-              NoteRepository.dateTimeString(widget.note.creationDate)
-                  .substring(6),
+              NoteRepository.dateTimeString(
+                widget.note.creationDate ?? DateTime.now(),
+              ).substring(6),
               style: Theme.of(context)
                   .textTheme
                   .headline5
@@ -91,7 +82,6 @@ class _NoteCreationViewState extends State<NoteCreationView> {
                 size: 27.0,
               ),
               onPressed: () {
-                _passwordFocus.requestFocus();
                 _noteConfigurations(_passwordController);
               },
             ),
@@ -107,21 +97,25 @@ class _NoteCreationViewState extends State<NoteCreationView> {
         final repo = watch(noteProvider.notifier);
 
         return Expanded(
-          child: EditableText(
-            focusNode: _contentFocus,
-            cursorColor: Theme.of(context).primaryColor,
-            controller: _contentController,
-            backgroundCursorColor: Theme.of(context).primaryColor,
-            maxLines: null,
-            scrollController: new ScrollController(),
-            onChanged: (_) {
-              repo.updateNote(
-                note: widget.note,
-                content: _contentController.text,
-                lastEditDate: DateTime.now(),
-              );
-            },
-            style: Theme.of(context).textTheme.headline6,
+          child: Column(
+            children: [
+              EditableText(
+                focusNode: _contentFocus,
+                cursorColor: Theme.of(context).primaryColor,
+                controller: _contentController,
+                backgroundCursorColor: Theme.of(context).primaryColor,
+                maxLines: null,
+                scrollController: new ScrollController(),
+                onChanged: (_) {
+                  repo.updateNote(
+                    note: widget.note,
+                    content: _contentController.text,
+                    lastEditDate: DateTime.now(),
+                  );
+                },
+                style: Theme.of(context).textTheme.headline6,
+              ),
+            ],
           ),
         );
       },
@@ -170,20 +164,11 @@ class _NoteCreationViewState extends State<NoteCreationView> {
     return showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      backgroundColor: cantonGrey[100],
+      backgroundColor: CantonColors.bgPrimary,
       elevation: 0,
       useRootNavigator: true,
       shape: SquircleBorder(radius: 55),
       builder: (_) {
-        Widget lockedIcon = [null, false].contains(widget.note.locked)
-            ? Icon(
-                CupertinoIcons.lock_fill,
-                color: CantonColors.purple,
-              )
-            : Icon(
-                CupertinoIcons.lock_slash_fill,
-                color: CantonColors.purple,
-              );
         return Consumer(
           builder: (context, watch, child) {
             bool _pWordIsEmpty = false;
@@ -214,113 +199,7 @@ class _NoteCreationViewState extends State<NoteCreationView> {
                         children: [
                           pinNoteButton(widget.note, setState),
                           SizedBox(width: 7),
-
-                          /// Whenever I try to separate this method from the main
-                          /// widget tree into its own, I get an error.
-                          CantonHeaderButton(
-                            icon: lockedIcon,
-                            onPressed: () {
-                              showDialog(
-                                context: context,
-                                builder: (_) => AlertDialog(
-                                  shape: SquircleBorder(radius: 55),
-                                  elevation: 0,
-                                  title: Text(
-                                    'Configure Lock',
-                                    style:
-                                        Theme.of(context).textTheme.headline4,
-                                  ),
-                                  content: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Create a password for your note',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline6
-                                            .copyWith(
-                                                color:
-                                                    CantonColors.textSecondary),
-                                      ),
-                                      SizedBox(height: 7),
-                                      CantonTextInput(
-                                        obscureText: true,
-                                        isTextFormField: true,
-                                        isTextInputTwo: true,
-                                        controller: _passwordController,
-                                        focusNode: _passwordFocus,
-                                        textInputType: TextInputType.number,
-                                      ),
-                                      SizedBox(height: 10),
-                                      _pWordIsEmpty
-                                          ? Text(
-                                              'Please Enter a password',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyText1
-                                                  .copyWith(
-                                                      color: CantonColors
-                                                          .textDanger),
-                                            )
-                                          : Container(),
-                                      SizedBox(height: 10),
-                                      Row(
-                                        children: [
-                                          CantonPrimaryButton(
-                                            buttonText: 'Cancel',
-                                            containerColor:
-                                                CantonColors.bgDanger,
-                                            textColor: CantonColors.textDanger,
-                                            containerWidth:
-                                                MediaQuery.of(context)
-                                                            .size
-                                                            .width /
-                                                        2 -
-                                                    70,
-                                            onPressed: () {
-                                              _passwordController =
-                                                  TextEditingController();
-                                              Navigator.pop(context);
-                                            },
-                                          ),
-                                          Spacer(),
-                                          CantonPrimaryButton(
-                                            buttonText: 'Save',
-                                            containerColor:
-                                                CantonColors.bgInverse,
-                                            textColor: CantonColors.bgPrimary,
-                                            containerWidth:
-                                                MediaQuery.of(context)
-                                                            .size
-                                                            .width /
-                                                        2 -
-                                                    70,
-                                            onPressed: () {
-                                              setState(() {
-                                                _passwordController
-                                                        .text.isNotEmpty
-                                                    ? widget.note.locked = true
-                                                    : widget.note.locked =
-                                                        false;
-                                              });
-                                              Navigator.pop(context);
-                                            },
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(height: 30),
-                                      Text(
-                                        'To remove the password Lock, simply delete the text in the text field.',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline6,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
+                          lockNoteButton(_pWordIsEmpty),
                         ],
                       ),
                       const SizedBox(height: 7),
@@ -371,10 +250,108 @@ class _NoteCreationViewState extends State<NoteCreationView> {
           );
     return CantonHeaderButton(
         icon: pinnedIcon,
+        backgroundColor: CantonColors.gray[200],
         onPressed: () {
           setState(() {
             note.pinned = !note.pinned;
           });
         });
+  }
+
+  Widget lockNoteButton(bool _pWordIsEmpty) {
+    Widget lockedIcon = [null, false].contains(widget.note.locked)
+        ? Icon(
+            CupertinoIcons.lock_fill,
+            color: CantonColors.purple,
+          )
+        : Icon(
+            CupertinoIcons.lock_slash_fill,
+            color: CantonColors.purple,
+          );
+    return CantonHeaderButton(
+      icon: lockedIcon,
+      backgroundColor: CantonColors.gray[200],
+      onPressed: () {
+        showDialog(
+          context: context,
+          builder: (_) => AlertDialog(
+            shape: SquircleBorder(radius: 55),
+            elevation: 0,
+            title: Text(
+              'Configure Lock',
+              style: Theme.of(context).textTheme.headline4,
+            ),
+            content: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  'Create a password for your note',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6
+                      .copyWith(color: CantonColors.textSecondary),
+                ),
+                SizedBox(height: 7),
+                CantonTextInput(
+                  obscureText: true,
+                  isTextFormField: true,
+                  isTextInputTwo: true,
+                  controller: _passwordController,
+                  focusNode: _passwordFocus,
+                  textInputType: TextInputType.number,
+                ),
+                SizedBox(height: 10),
+                _pWordIsEmpty
+                    ? Text(
+                        'Please Enter a password',
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1
+                            .copyWith(color: CantonColors.textDanger),
+                      )
+                    : Container(),
+                SizedBox(height: 10),
+                Row(
+                  children: [
+                    CantonPrimaryButton(
+                      buttonText: 'Cancel',
+                      containerColor: CantonColors.bgDanger,
+                      textColor: CantonColors.textDanger,
+                      containerWidth:
+                          MediaQuery.of(context).size.width / 2 - 70,
+                      onPressed: () {
+                        _passwordController = TextEditingController();
+                        Navigator.pop(context);
+                      },
+                    ),
+                    Spacer(),
+                    CantonPrimaryButton(
+                      buttonText: 'Save',
+                      containerColor: CantonColors.bgInverse,
+                      textColor: CantonColors.bgPrimary,
+                      containerWidth:
+                          MediaQuery.of(context).size.width / 2 - 70,
+                      onPressed: () {
+                        setState(() {
+                          _passwordController.text.isNotEmpty
+                              ? widget.note.locked = true
+                              : widget.note.locked = false;
+                        });
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 30),
+                Text(
+                  'To remove the password Lock, simply delete the text in the text field.',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 }
