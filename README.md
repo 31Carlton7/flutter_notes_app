@@ -1,4 +1,4 @@
-# Notes Ap
+# Notes App
 
 A clean, simple and modern note taking app built with Flutter. Be sure to leave a star 🌟
 
