@@ -17,6 +17,7 @@ Fork the repository or download the code and navigate to the enclosing folder in
 ```
 flutter run --no-sound-null-safety
 ```
+I'm currently having issues with null-saftey as of now. Fixes will be coming soon.
 
 
 ## Dependencies
@@ -30,13 +31,8 @@ flutter run --no-sound-null-safety
 ## TODO
 
 - [ ] Add Notebooks to store notes
-- [ ] Add Animations
 - [ ] Make app responsive
 - [ ] Face ID to unlock note
-- [ ] Add Firebase
-  - [ ] GitHub Authentication
-  - [ ] Google Authentication
-  - [ ] Analytics
 
 ## Fixes
 - [ ] Fix sortList() method
