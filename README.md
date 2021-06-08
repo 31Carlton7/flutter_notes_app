@@ -12,6 +12,12 @@ A clean, simple and modern note taking app built with Flutter. Be sure to leave 
 - Search notes (FIX NEEDED): Filter out notes with the search bar.
 - Desktop Version (WIP): Supports desktop (MacOS currently, other platforms have not been tested as of now).
 
+## Getting Started
+Fork the repository or download the code and navigate to the enclosing folder inside your terminal. Then use this command to run:
+```
+flutter run --no-sound-null-safety
+```
+
 
 ## Dependencies
 
