@@ -10,10 +10,12 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
+    return CantonApp(
       title: kAppTitle,
-      theme: cantonLightTheme().copyWith(primaryColor: CantonColors.blue),
+      primaryLightColor: CantonColors.blue,
+      primaryLightVariantColor: CantonColors.blue[400],
+      primaryDarkColor: CantonDarkColors.blue,
+      primaryDarkVariantColor: CantonDarkColors.blue[400],
       home: HomeView(),
     );
   }

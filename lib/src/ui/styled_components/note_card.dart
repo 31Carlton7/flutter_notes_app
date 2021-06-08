@@ -2,7 +2,7 @@ import 'package:canton_design_system/canton_design_system.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:notes_app/domain/note_repository/note_repository.dart';
+import 'package:notes_app/src/services/repositories/note_repository.dart';
 import 'package:notes_app/src/models/note.dart';
 import 'package:notes_app/src/ui/functions/note_card_functions/delete_note_action.dart';
 import 'package:notes_app/src/ui/functions/note_card_functions/pin_note_action.dart';
@@ -11,7 +11,7 @@ import 'package:notes_app/src/ui/providers/note_provider.dart';
 
 class NoteCard extends ConsumerWidget {
   final Note note;
-  const NoteCard({Key key, @required this.note}) : super(key: key);
+  const NoteCard(this.note);
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
@@ -53,7 +53,7 @@ class NoteCard extends ConsumerWidget {
 
   Widget _body(BuildContext context) {
     List<String> contentWordList =
-        note.content.replaceAll(new RegExp(r'\s+'), ' ').split(' ');
+        note.content!.replaceAll(new RegExp(r'\s+'), ' ').split(' ');
 
     return Row(
       children: <Widget>[
@@ -66,7 +66,7 @@ class NoteCard extends ConsumerWidget {
                     size: 15,
                     color: CantonColors.iconTertiary,
                   ),
-            note.locked ? SizedBox(height: 7) : Container(),
+            note.locked! ? SizedBox(height: 7) : Container(),
             [null, false].contains(note.locked)
                 ? Container()
                 : Icon(
@@ -83,20 +83,24 @@ class NoteCard extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                noteTitleText(contentWordList),
+                note.title!.split(' ').length > 10
+                    ? CantonMethods.addDotsToString(note.title, 10)
+                    : note.title!,
                 style: Theme.of(context)
                     .textTheme
-                    .headline6
+                    .headline6!
                     .copyWith(color: CantonColors.textPrimary),
               ),
               const SizedBox(height: 7),
               Text(
                 [null, false].contains(note.locked)
-                    ? noteContentText(contentWordList)
+                    ? note.content!.split(' ').length > 10
+                        ? CantonMethods.addDotsToString(note.content, 10)
+                        : note.content!
                     : 'Locked Note',
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText1
+                    .bodyText1!
                     .copyWith(color: CantonColors.textPrimary),
               ),
             ],
@@ -104,11 +108,11 @@ class NoteCard extends ConsumerWidget {
         ),
         Spacer(),
         Text(
-          NoteRepository.dateTimeString(note.lastEditDate).substring(6),
+          NoteRepository.dateTimeString(note.lastEditDate!).substring(6),
           textAlign: TextAlign.right,
           style: Theme.of(context)
               .textTheme
-              .bodyText2
+              .bodyText2!
               .copyWith(color: CantonColors.textTertiary),
         ),
       ],
@@ -122,28 +126,30 @@ class NoteCard extends ConsumerWidget {
   /// up with "...".
 
   String noteTitleText(List<String> contentWordList) {
-    if (note.content.trimLeft().contains('\n')) {
+    if (note.content!.trimLeft().contains('\n')) {
       if (contentWordList.length >= 10) {
         return CantonMethods.addDotsToString(
-            note.content.trimLeft().substring(0, note.content.indexOf('\n')),
+            note.content!.trimLeft().substring(0, note.content!.indexOf('\n')),
             10);
       } else {
-        return note.content.trimLeft().substring(0, note.content.indexOf('\n'));
+        return note.content!
+            .trimLeft()
+            .substring(0, note.content!.indexOf('\n'));
       }
     } else {
       if (contentWordList.length >= 10) {
-        return CantonMethods.addDotsToString(note.content.trimLeft(), 10);
+        return CantonMethods.addDotsToString(note.content!.trimLeft(), 10);
       } else {
-        return note.content.trimLeft();
+        return note.content!.trimLeft();
       }
     }
   }
 
   String noteContentText(List<String> contentWordList) {
-    if (note.content.contains('\n') &&
+    if (note.content!.contains('\n') &&
         (contentWordList.join(' ').trim() != noteTitleText(contentWordList))) {
-      String s = note.content
-          .substring(note.content.indexOf('\n'))
+      String s = note.content!
+          .substring(note.content!.indexOf('\n'))
           .trim()
           .replaceAll(new RegExp(r'\s+'), ' ');
       if (s.split(' ').length >= 10) {

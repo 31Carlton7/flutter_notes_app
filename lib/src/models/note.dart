@@ -1,15 +1,17 @@
 import 'dart:convert';
 
 class Note {
-  String id;
-  String content;
-  String password;
-  bool pinned;
-  bool locked;
-  DateTime creationDate;
-  DateTime lastEditDate;
+  String? id;
+  String? title;
+  String? content;
+  String? password;
+  bool? pinned;
+  bool? locked;
+  DateTime? creationDate;
+  DateTime? lastEditDate;
   Note({
     this.id,
+    this.title,
     this.content,
     this.password,
     this.pinned,
@@ -19,16 +21,18 @@ class Note {
   });
 
   Note copyWith({
-    String id,
-    String content,
-    String password,
-    bool pinned,
-    bool locked,
-    DateTime creationDate,
-    DateTime lastEditDate,
+    String? id,
+    String? title,
+    String? content,
+    String? password,
+    bool? pinned,
+    bool? locked,
+    DateTime? creationDate,
+    DateTime? lastEditDate,
   }) {
     return Note(
       id: id ?? this.id,
+      title: title ?? this.title,
       content: content ?? this.content,
       password: password ?? this.password,
       pinned: pinned ?? this.pinned,
@@ -41,18 +45,20 @@ class Note {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
+      'title': title,
       'content': content,
       'password': password,
       'pinned': pinned,
       'locked': locked,
-      'creationDate': creationDate.millisecondsSinceEpoch,
-      'lastEditDate': lastEditDate.millisecondsSinceEpoch,
+      'creationDate': creationDate!.millisecondsSinceEpoch,
+      'lastEditDate': lastEditDate!.millisecondsSinceEpoch,
     };
   }
 
   factory Note.fromMap(Map<String, dynamic> map) {
     return Note(
       id: map['id'],
+      title: map['title'],
       content: map['content'],
       password: map['password'],
       pinned: map['pinned'],
@@ -68,7 +74,7 @@ class Note {
 
   @override
   String toString() {
-    return 'Note(id: $id, content: $content, password: $password, pinned: $pinned, locked: $locked, creationDate: $creationDate, lastEditDate: $lastEditDate)';
+    return 'Note(id: $id, title: $title, content: $content, password: $password, pinned: $pinned, locked: $locked, creationDate: $creationDate, lastEditDate: $lastEditDate)';
   }
 
   @override
@@ -77,6 +83,7 @@ class Note {
 
     return other is Note &&
         other.id == id &&
+        other.title == title &&
         other.content == content &&
         other.password == password &&
         other.pinned == pinned &&
@@ -88,6 +95,7 @@ class Note {
   @override
   int get hashCode {
     return id.hashCode ^
+        title.hashCode ^
         content.hashCode ^
         password.hashCode ^
         pinned.hashCode ^

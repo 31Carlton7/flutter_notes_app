@@ -7,11 +7,11 @@ Future<void> UnlockNote(BuildContext context, Note note) {
   TextEditingController _passwordController = TextEditingController();
   bool _incorrect = false;
 
-  if (note.locked) {
+  if (note.locked!) {
     return showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        shape: SquircleBorder(radius: 55),
+        shape: SquircleBorder(radius: BorderRadius.circular(55)),
         elevation: 0,
         title: Text(
           'Unlock Note',
@@ -25,14 +25,13 @@ Future<void> UnlockNote(BuildContext context, Note note) {
                 'Enter the password for this note',
                 style: Theme.of(context)
                     .textTheme
-                    .headline6
+                    .headline6!
                     .copyWith(color: CantonColors.textSecondary),
               ),
               SizedBox(height: 7),
               CantonTextInput(
                 obscureText: true,
                 isTextFormField: true,
-                isTextInputTwo: true,
                 controller: _passwordController,
                 textInputType: TextInputType.number,
               ),
@@ -42,7 +41,7 @@ Future<void> UnlockNote(BuildContext context, Note note) {
                       'Incorrect Password',
                       style: Theme.of(context)
                           .textTheme
-                          .bodyText1
+                          .bodyText1!
                           .copyWith(color: CantonColors.textDanger),
                     )
                   : Container(),

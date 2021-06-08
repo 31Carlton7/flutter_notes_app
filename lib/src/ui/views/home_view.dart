@@ -33,7 +33,8 @@ class _HomeViewState extends State<HomeView> {
         Consumer(
           builder: (context, watch, child) {
             final noteList = watch(noteProvider);
-            context.read(noteProvider.notifier).sortList();
+            //print(noteList[0]);
+            //context.read(noteProvider.notifier).sortList();
             return _body(context, noteList);
           },
         ),
@@ -49,7 +50,7 @@ class _HomeViewState extends State<HomeView> {
             Text(
               'Notes',
               textAlign: TextAlign.end,
-              style: Theme.of(context).textTheme.headline1.copyWith(
+              style: Theme.of(context).textTheme.headline1!.copyWith(
                     color: Theme.of(context).primaryColor,
                   ),
             ),
@@ -83,8 +84,8 @@ class _HomeViewState extends State<HomeView> {
         SizedBox(height: 7),
         Consumer(builder: (context, watch, child) {
           return CantonTextInput(
-            isTextInputTwo: true,
             obscureText: false,
+            isTextFormField: false,
             hintText: 'Search notes',
             onChanged: (string) => _searchNotes(string, watch),
           );
@@ -97,15 +98,16 @@ class _HomeViewState extends State<HomeView> {
     setState(() {
       final newNoteList = watch(noteProvider).where((note) {
         String noteTitleText() {
-          if (note.content.trimLeft().contains('\n')) {
-            return note.content
+          if (note.content!.trimLeft().contains('\n')) {
+            return note.content!
                 .trimLeft()
-                .substring(0, note.content.indexOf('\n'));
+                .substring(0, note.content!.indexOf('\n'));
           } else {
-            if (note.content.split(' ').length >= 10) {
-              return CantonMethods.addDotsToString(note.content.trimLeft(), 10);
+            if (note.content!.split(' ').length >= 10) {
+              return CantonMethods.addDotsToString(
+                  note.content!.trimLeft(), 10);
             } else {
-              return note.content.trimLeft().toLowerCase();
+              return note.content!.trimLeft().toLowerCase();
             }
           }
         }
@@ -117,25 +119,24 @@ class _HomeViewState extends State<HomeView> {
   }
 
   Widget _body(BuildContext context, List<Note> noteList) {
-    context.read(noteProvider.notifier).sortList();
-    List<Widget> notes = [];
-    for (Note note in noteList) {
-      ![null, false].contains(note.pinned)
-          ? notes.insert(0, NoteCard(note: note))
-          : notes.add(NoteCard(note: note));
-    }
+    // List<Widget> notes = [];
+    // for (Note note in noteList) {
+    //   ![null, false].contains(note.pinned)
+    //       ? notes.insert(0, NoteCard(note: note))
+    //       : notes.add(NoteCard(note: note));
+    // }
     return Expanded(
       child: noteList.length > 0
           ? ListView.builder(
-              itemCount: notes.length,
-              itemBuilder: (context, index) => notes[index],
+              itemCount: noteList.length,
+              itemBuilder: (context, index) => NoteCard(noteList[index]),
             )
           : Center(
               child: Text(
                 'No Notes',
                 style: Theme.of(context)
                     .textTheme
-                    .headline4
+                    .headline4!
                     .copyWith(color: CantonColors.textTertiary),
               ),
             ),

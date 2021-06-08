@@ -16,9 +16,9 @@ class ProfileView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         _header(context),
-        SizedBox(height: 10),
-        _profile(context),
-        SizedBox(height: 30),
+        // SizedBox(height: 10),
+        // _profile(context),
+        // SizedBox(height: 30),
         _totalNotesCreated(context),
         SizedBox(height: 7),
         _totalWordsTyped(context),
@@ -36,7 +36,7 @@ class ProfileView extends StatelessWidget {
       Text(
         'Profile',
         textAlign: TextAlign.center,
-        style: Theme.of(context).textTheme.headline4.copyWith(
+        style: Theme.of(context).textTheme.headline4!.copyWith(
               color: Theme.of(context).primaryColor,
             ),
       ),
@@ -98,7 +98,7 @@ class ProfileView extends StatelessWidget {
                 final repo = watch(noteProvider);
                 int totalWords = 0;
                 for (Note note in repo) {
-                  totalWords += note.content
+                  totalWords += note.content!
                       .trim()
                       .replaceAll(new RegExp(r'\s+'), ' ')
                       .split(' ')
@@ -132,7 +132,7 @@ class ProfileView extends StatelessWidget {
                 final repo = watch(noteProvider);
                 int totalCharacters = 0;
                 for (Note note in repo) {
-                  totalCharacters += note.content
+                  totalCharacters += note.content!
                       .trim()
                       .replaceAll(new RegExp(r'\s+'), ' ')
                       .split('')

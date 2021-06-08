@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-import 'package:canton_design_system/canton_design_system.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -26,13 +24,15 @@ class NoteRepository extends StateNotifier<List<Note>> {
 
   /// Updates specified [Note].
   Future<void> updateNote({
-    @required Note note,
-    String content,
-    bool pinned,
-    bool locked,
-    String password,
-    DateTime lastEditDate,
+    required Note note,
+    String? title,
+    String? content,
+    bool? pinned,
+    bool? locked,
+    String? password,
+    DateTime? lastEditDate,
   }) async {
+    note.title = title ?? note.title;
     note.content = content ?? note.content;
     note.lastEditDate = lastEditDate ?? note.lastEditDate;
     note.pinned = pinned ?? note.pinned;
@@ -58,7 +58,7 @@ class NoteRepository extends StateNotifier<List<Note>> {
     /// Removes all [Note] (s) from device.
     // prefs.remove('note_list');
 
-    List<String> savedNoteList = prefs.getStringList('note_list');
+    List<String>? savedNoteList = prefs.getStringList('note_list') ?? [];
     state =
         savedNoteList.map((note) => Note.fromMap(json.decode(note))).toList();
   }
@@ -67,7 +67,7 @@ class NoteRepository extends StateNotifier<List<Note>> {
   /// will be the first [Note] in the note list.
   Future<void> sortList() async {
     state = [
-      ...state..sort((a, b) => b.lastEditDate.compareTo(a.lastEditDate))
+      ...state..sort((a, b) => b.lastEditDate!.compareTo(a.lastEditDate!))
     ];
   }
 

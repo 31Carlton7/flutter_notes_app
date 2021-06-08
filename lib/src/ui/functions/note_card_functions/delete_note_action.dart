@@ -1,6 +1,6 @@
 import 'package:canton_design_system/canton_design_system.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:notes_app/domain/note_repository/note_repository.dart';
+import 'package:notes_app/src/services/repositories/note_repository.dart';
 import 'package:notes_app/src/models/note.dart';
 
 class DeleteNoteAction extends StatelessWidget {
@@ -13,17 +13,18 @@ class DeleteNoteAction extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: 5, bottom: 5, left: 5),
       child: Material(
-        color: CantonColors.bgDangerInverse,
+        color: Theme.of(context).colorScheme.onError,
         shape: SquircleBorder(
-          radius: 35,
+          radius: BorderRadius.circular(35),
         ),
         child: SlideAction(
-            child: Icon(
-              FeatherIcons.trash,
-              size: 27,
-              color: CantonColors.gray[100],
-            ),
-            onTap: () => repo.removeNote(note)),
+          child: IconlyIcon(
+            IconlyBold.Delete,
+            size: 27,
+            color: Theme.of(context).colorScheme.error,
+          ),
+          onTap: () => repo.removeNote(note),
+        ),
       ),
     );
   }
