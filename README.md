@@ -6,11 +6,10 @@ A clean, simple and modern note taking app built with Flutter. Be sure to leave 
 
 - Create notes: Create notes that store locally to device.
 - Edit notes: Edit notes that were previously created.
-- Lockable notes (WIP): Lock notes with a password.
+- Lockable notes* (WIP): Lock notes with a password. (Functionality has been commented out)
 - Pinnable notes: Pin notes to the top of the list.
 - User stats: Stats for the user's notes such as total notes, words written etc.
 - Search notes (FIX NEEDED): Filter out notes with the search bar.
-- Desktop Version (WIP): Supports desktop (MacOS currently, other platforms have not been tested as of now).
 
 ## Getting Started
 Fork the repository or download the code and navigate to the enclosing folder inside your terminal. Then use this command to run:
@@ -31,12 +30,9 @@ I'm currently having issues with null-saftey as of now. Fixes will be coming soo
 ## TODO
 
 - [ ] Add Notebooks to store notes
-- [ ] Make app responsive
-- [ ] Face ID to unlock note
 
 ## Fixes
 - [ ] Fix sortList() method
-- [ ] Fix Create Password before creating note glitch
 
 ## Screenshots
 <div>
