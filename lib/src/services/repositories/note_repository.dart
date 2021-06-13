@@ -1,4 +1,6 @@
 import 'dart:convert';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:canton_design_system/canton_design_system.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -9,7 +11,7 @@ class NoteRepository extends StateNotifier<List<Note>> {
 
   /// Adds a [Note] to the note list.
   Future<void> addNote(Note note) async {
-    state = [...state, note];
+    state = [note, ...state];
     saveData();
   }
 
@@ -27,6 +29,7 @@ class NoteRepository extends StateNotifier<List<Note>> {
     required Note note,
     String? title,
     String? content,
+    List<Tag>? tags,
     bool? pinned,
     bool? locked,
     String? password,
@@ -34,6 +37,7 @@ class NoteRepository extends StateNotifier<List<Note>> {
   }) async {
     note.title = title ?? note.title;
     note.content = content ?? note.content;
+    note.tags = tags ?? note.tags;
     note.lastEditDate = lastEditDate ?? note.lastEditDate;
     note.pinned = pinned ?? note.pinned;
     note.locked = locked ?? note.locked;
@@ -52,13 +56,13 @@ class NoteRepository extends StateNotifier<List<Note>> {
   }
 
   /// Loads all [Note] (s) from note list stored within the device.
-  void loadData() async {
+  Future<void> loadData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     /// Removes all [Note] (s) from device.
     // prefs.remove('note_list');
 
-    List<String>? savedNoteList = prefs.getStringList('note_list') ?? [];
+    List<String> savedNoteList = prefs.getStringList('note_list')!;
     state =
         savedNoteList.map((note) => Note.fromMap(json.decode(note))).toList();
   }
