@@ -1,6 +1,8 @@
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:canton_design_system/canton_design_system.dart';
-import 'package:notes_app/src/config/constants.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:notes_app/src/config/constants.dart';
 import 'package:notes_app/src/ui/views/home_view.dart';
 
 Future<void> main() async {
