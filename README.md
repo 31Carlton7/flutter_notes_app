@@ -2,7 +2,7 @@
 
 A clean, and modern note taking app that has a complex ui, entirely built with Flutter. Be sure to leave a star 🌟
 
-#### [Screenshots](#screenshots)
+#### [Screenshots](#screenshots-1)
 
 ## Features
 
