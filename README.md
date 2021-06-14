@@ -16,6 +16,14 @@ A clean, and modern note taking app that has a complex ui, entirely built with F
 - _Complex UI_: Modern and complex ui that is visually appealing and functional
 - _Local storage_: Save your notes to your device.
 
+## Upcoming Features
+
+- _Lockable Notes_: Notes will be able to be unlocked with Face ID/Touch ID or a 4 digit password(Across all notes).
+- _Rich Text Editor/WYSIWYG_: Rich text editor to be incorporated into the note creation functionality.
+- _Firebase Support_: Analytics, Storage and authentication.
+- _Fuchsia OS Support_: Support to run on Google Fuchsia OS.
+- _App Store/Google Play Store_: I plan on releasing this app on both app stores sometime before the end of the summer.
+
 ## Getting Started
 Fork the repository or download the code and navigate to the enclosing folder inside your terminal. Then use this command to run:
 ```
