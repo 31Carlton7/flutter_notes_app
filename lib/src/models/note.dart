@@ -11,7 +11,6 @@ class Note {
   String? password;
   List<Tag>? tags;
   bool? pinned;
-  bool? locked;
   DateTime? creationDate;
   DateTime? lastEditDate;
 
@@ -22,7 +21,6 @@ class Note {
     this.password,
     this.tags,
     this.pinned,
-    this.locked,
     this.creationDate,
     this.lastEditDate,
   });
@@ -34,7 +32,6 @@ class Note {
     String? password,
     List<Tag>? tags,
     bool? pinned,
-    bool? locked,
     DateTime? creationDate,
     DateTime? lastEditDate,
   }) {
@@ -45,7 +42,6 @@ class Note {
       password: password ?? this.password,
       tags: tags ?? this.tags,
       pinned: pinned ?? this.pinned,
-      locked: locked ?? this.locked,
       creationDate: creationDate ?? this.creationDate,
       lastEditDate: lastEditDate ?? this.lastEditDate,
     );
@@ -59,7 +55,6 @@ class Note {
       'password': password,
       'tags': tags?.map((x) => x.toMap()).toList(),
       'pinned': pinned,
-      'locked': locked,
       'creationDate': creationDate?.millisecondsSinceEpoch,
       'lastEditDate': lastEditDate?.millisecondsSinceEpoch,
     };
@@ -73,7 +68,6 @@ class Note {
       password: map['password'],
       tags: List<Tag>.from(map['tags']?.map((x) => Tag.fromMap(x))),
       pinned: map['pinned'],
-      locked: map['locked'],
       creationDate: DateTime.fromMillisecondsSinceEpoch(map['creationDate']),
       lastEditDate: DateTime.fromMillisecondsSinceEpoch(map['lastEditDate']),
     );
@@ -85,7 +79,7 @@ class Note {
 
   @override
   String toString() {
-    return 'Note(id: $id, title: $title, content: $content, password: $password, tags: $tags, pinned: $pinned, locked: $locked, creationDate: $creationDate, lastEditDate: $lastEditDate)';
+    return 'Note(id: $id, title: $title, content: $content, password: $password, tags: $tags, pinned: $pinned, creationDate: $creationDate, lastEditDate: $lastEditDate)';
   }
 
   @override
@@ -99,7 +93,6 @@ class Note {
         other.password == password &&
         listEquals(other.tags, tags) &&
         other.pinned == pinned &&
-        other.locked == locked &&
         other.creationDate == creationDate &&
         other.lastEditDate == lastEditDate;
   }
@@ -112,7 +105,6 @@ class Note {
         password.hashCode ^
         tags.hashCode ^
         pinned.hashCode ^
-        locked.hashCode ^
         creationDate.hashCode ^
         lastEditDate.hashCode;
   }

@@ -31,7 +31,6 @@ class NoteRepository extends StateNotifier<List<Note>> {
     String? content,
     List<Tag>? tags,
     bool? pinned,
-    bool? locked,
     String? password,
     DateTime? lastEditDate,
   }) async {
@@ -40,7 +39,6 @@ class NoteRepository extends StateNotifier<List<Note>> {
     note.tags = tags ?? note.tags;
     note.lastEditDate = lastEditDate ?? note.lastEditDate;
     note.pinned = pinned ?? note.pinned;
-    note.locked = locked ?? note.locked;
     note.password = password ?? note.password;
     sortList();
     saveData();
