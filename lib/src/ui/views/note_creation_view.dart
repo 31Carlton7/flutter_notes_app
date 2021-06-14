@@ -239,7 +239,6 @@ class _NoteCreationViewState extends State<NoteCreationView> {
             content: _contentController.text,
             tags: _tags,
             pinned: widget.note!.pinned ?? false,
-            locked: widget.note!.locked ?? false,
             password: widget.note!.password ?? '',
             creationDate: DateTime.now(),
             lastEditDate: DateTime.now(),
