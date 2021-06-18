@@ -109,5 +109,5 @@ The [canton_design_system](https://github.com/31Carlton7/canton_design_system) p
 
 If you have any questions, you can reach me here:
 
-- Instagram: 31carlton7
+- Instagram: [@31carlton7](https://www.instagram.com/31carlton7/)
 - Email: carltonaikins7@gmail.com
