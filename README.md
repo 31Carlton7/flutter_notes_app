@@ -32,12 +32,14 @@ flutter run --no-sound-null-safety
 The [canton_design_system](https://github.com/31Carlton7/canton_design_system) package, as of now, does not support null saftey. It will at a later time.
 
 ## Dependencies
-
-- canton_design_system: [Link](https://github.com/31Carlton7/canton_design_system) to repository
+```
+- canton_design_system: *
 - persistent_bottom_nav_bar:
 - shared_preferences:
 - intl:
 - flutter_slidable:
+```
+*Please note that this package is not on [pub.dev](pub.dev). It's a private repo.
 
 ## Screenshots
 
