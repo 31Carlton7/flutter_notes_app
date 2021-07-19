@@ -201,7 +201,7 @@ class _HomeViewState extends State<HomeView> {
     final newNoteList = context.read(noteProvider).where((note) {
       String tagsString = '';
       note.tags!.forEach((element) {
-        tagsString += element.name;
+        tagsString += element.name!;
       });
       String searchText = note.title! + tagsString;
       return searchText.toLowerCase().contains(query.toLowerCase());
@@ -242,7 +242,7 @@ class _HomeViewState extends State<HomeView> {
         child: Padding(
           padding: const EdgeInsets.all(4.0),
           child: Text(
-            tag.name,
+            tag.name!,
             style: Theme.of(context)
                 .textTheme
                 .bodyText2

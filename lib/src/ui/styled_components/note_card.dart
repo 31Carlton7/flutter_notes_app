@@ -73,7 +73,7 @@ class NoteCard extends StatelessWidget {
       return _contentText(note.content!);
     } else {
       if (string.split(' ').length > 10) {
-        return CantonMethods.addDotsToString(note.title, 10);
+        return CantonMethods.addDotsToString(note.title!, 10);
       } else {
         return string;
       }
@@ -82,7 +82,7 @@ class NoteCard extends StatelessWidget {
 
   String _contentText(String string) {
     if (note.content!.split(' ').length > 10) {
-      return CantonMethods.addDotsToString(note.content, 10);
+      return CantonMethods.addDotsToString(note.content!, 10);
     } else {
       if (!(note.content! == '')) {
         return note.content!;
@@ -104,7 +104,7 @@ class NoteCard extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(4.0),
             child: Text(
-              _tagName(tag.name),
+              _tagName(tag.name!),
               style: Theme.of(context)
                   .textTheme
                   .bodyText2

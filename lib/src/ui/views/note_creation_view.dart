@@ -127,10 +127,11 @@ class _NoteCreationViewState extends State<NoteCreationView> {
     final _initTags = <String>[];
 
     for (final tag in _tags!) {
-      _initTags.add(tag.name);
+      _initTags.add(tag.name!);
     }
 
     return CantonTagTextInput(
+      maxTags: 99,
       initialTags: _initTags,
       textFieldStyler: TagTextInputStyler(
         cursorColor: Theme.of(context).primaryColor,

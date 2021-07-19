@@ -15,9 +15,9 @@ class MyApp extends StatelessWidget {
     return CantonApp(
       title: kAppTitle,
       primaryLightColor: CantonColors.blue,
-      primaryLightVariantColor: CantonColors.blue[400],
+      primaryLightVariantColor: CantonColors.blue[400]!,
       primaryDarkColor: CantonDarkColors.blue,
-      primaryDarkVariantColor: CantonDarkColors.blue[400],
+      primaryDarkVariantColor: CantonDarkColors.blue[400]!,
       home: HomeView(),
     );
   }
