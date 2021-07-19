@@ -1,11 +1,9 @@
 # Notes App
-
-A clean, and modern note taking app that has a complex ui, entirely built with Flutter. Be sure to leave a star 🌟
+A clean, and modern note taking app that has a complex ui, entirely built with Flutter. This app is also null safe. Be sure to leave a star 🌟
 
 #### [Screenshots](#screenshots-1)
 
 ## Features
-
 - _Create notes_: Create notes that store locally to device.
 - _Edit notes_: Edit notes that were previously created.
 - _Pinnable notes_: Pin notes to the top of the list.
@@ -17,7 +15,6 @@ A clean, and modern note taking app that has a complex ui, entirely built with F
 - _Local storage_: Save your notes to your device.
 
 ## Upcoming Features
-
 - _Lockable Notes_: Notes will be able to be unlocked with Face ID/Touch ID or a 4 digit password(Across all notes).
 - _Rich Text Editor/WYSIWYG_: Rich text editor to be incorporated into the note creation functionality.
 - _Firebase Support_: Analytics, Storage and authentication.
@@ -25,22 +22,20 @@ A clean, and modern note taking app that has a complex ui, entirely built with F
 - _App Store/Google Play Store_: I plan on releasing this app on both app stores sometime before the end of the summer.
 
 ## Getting Started
-Fork the repository or download the code and navigate to the enclosing folder inside your terminal. Then use this command to run:
+Fork or clone this repository or download the code and navigate to the enclosing folder inside your terminal. Then use this command to run:
 ```
-flutter run --no-sound-null-safety
+flutter run
 ```
-The [canton_design_system](https://github.com/31Carlton7/canton_design_system) package, as of now, does not support null saftey. It will at a later time.
 
 ## Dependencies
 
-- canton_design_system: [Link](https://github.com/31Carlton7/canton_design_system) to repository
+- canton_design_system: [Link to repository](https://github.com/31Carlton7/canton_design_system)
 - persistent_bottom_nav_bar:
 - shared_preferences:
 - intl:
 - flutter_slidable:
 
 ## Screenshots
-
 <table> 
   <th>Light Mode</th>
   <tr>
@@ -106,8 +101,7 @@ The [canton_design_system](https://github.com/31Carlton7/canton_design_system) p
 </table>
 
 ## Socials
-
 If you have any questions, you can reach me here:
 
-- Instagram: 31carlton7
+- Instagram: [@31carlton7](https://www.instagram.com/31carlton7/)
 - Email: carltonaikins7@gmail.com
