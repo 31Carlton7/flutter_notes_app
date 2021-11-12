@@ -8,7 +8,6 @@ import 'package:notes_app/src/ui/providers/note_provider.dart';
 import 'package:notes_app/src/ui/components/note_card.dart';
 import 'package:notes_app/src/ui/views/home_view/components/home_view_header.dart';
 import 'package:notes_app/src/ui/views/home_view/components/tag_card.dart';
-import 'package:notes_app/src/ui/views/tag_view/tag_view.dart';
 
 class HomeView extends StatefulWidget {
   @override
