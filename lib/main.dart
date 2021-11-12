@@ -1,12 +1,21 @@
-// ignore: import_of_legacy_library_into_null_safe
 import 'package:canton_design_system/canton_design_system.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:notes_app/src/config/constants.dart';
-import 'package:notes_app/src/ui/views/home_view.dart';
+import 'package:notes_app/src/ui/views/home_view/home_view.dart';
 
-Future<void> main() async {
-  runApp(ProviderScope(child: MyApp()));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Hive.initFlutter();
+  await Hive.openBox('flutter_notes_app');
+
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then((_) {
+    runApp(ProviderScope(child: MyApp()));
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -15,9 +24,9 @@ class MyApp extends StatelessWidget {
     return CantonApp(
       title: kAppTitle,
       primaryLightColor: CantonColors.blue,
-      primaryLightVariantColor: CantonColors.blue[400]!,
+      primaryLightVariantColor: CantonColors.blue[200]!,
       primaryDarkColor: CantonDarkColors.blue,
-      primaryDarkVariantColor: CantonDarkColors.blue[400]!,
+      primaryDarkVariantColor: CantonDarkColors.blue[200]!,
       home: HomeView(),
     );
   }
