@@ -1,4 +1,3 @@
-// ignore: import_of_legacy_library_into_null_safe
 import 'package:canton_design_system/canton_design_system.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,7 +13,7 @@ class DeleteNoteAction extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     return Container(
-      margin: EdgeInsets.only(top: 5, bottom: 5, left: 5),
+      margin: EdgeInsets.only(left: 10),
       child: SlideAction(
         decoration: ShapeDecoration(
           color: Theme.of(context).colorScheme.onError,

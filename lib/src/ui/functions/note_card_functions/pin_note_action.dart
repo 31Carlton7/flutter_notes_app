@@ -1,4 +1,3 @@
-// ignore: import_of_legacy_library_into_null_safe
 import 'package:canton_design_system/canton_design_system.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -15,7 +14,7 @@ class PinNoteAction extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     return Container(
-      margin: EdgeInsets.only(top: 5, bottom: 5, right: 5),
+      margin: EdgeInsets.only(right: 10),
       child: SlideAction(
         decoration: ShapeDecoration(
           color: Theme.of(context).colorScheme.onSurface,
@@ -24,16 +23,13 @@ class PinNoteAction extends ConsumerWidget {
           ),
         ),
         child: Icon(
-          note.pinned!
-              ? CupertinoIcons.pin_slash_fill
-              : CupertinoIcons.pin_fill,
+          note.pinned! ? CupertinoIcons.pin_slash_fill : CupertinoIcons.pin_fill,
           size: 27,
           color: Theme.of(context).colorScheme.surface,
         ),
         onTap: () {
           setState(() {
-            watch(noteProvider.notifier)
-                .updateNote(note: note, pinned: !note.pinned!);
+            watch(noteProvider.notifier).updateNote(note: note, pinned: !note.pinned!);
           });
         },
       ),
