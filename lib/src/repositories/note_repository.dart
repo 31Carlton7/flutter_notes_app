@@ -1,10 +1,10 @@
 import 'dart:convert';
-// ignore: import_of_legacy_library_into_null_safe
+
 import 'package:canton_design_system/canton_design_system.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:notes_app/src/models/note.dart';
+import 'package:hive/hive.dart';
 
 class NoteRepository extends StateNotifier<List<Note>> {
   NoteRepository() : super([]);
@@ -12,7 +12,7 @@ class NoteRepository extends StateNotifier<List<Note>> {
   /// Adds a [Note] to the note list.
   Future<void> addNote(Note note) async {
     state = [note, ...state];
-    saveData();
+    await _saveData();
   }
 
   /// Removes specified [Note] from note list.
@@ -21,7 +21,7 @@ class NoteRepository extends StateNotifier<List<Note>> {
       for (final nNote in state)
         if (note != nNote) nNote,
     ];
-    saveData();
+    await _saveData();
   }
 
   /// Updates specified [Note].
@@ -41,36 +41,32 @@ class NoteRepository extends StateNotifier<List<Note>> {
     note.pinned = pinned ?? note.pinned;
     note.password = password ?? note.password;
     sortList();
-    saveData();
+    await _saveData();
   }
 
   /// Saves entire note list to the device.
-  void saveData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+  Future<void> _saveData() async {
+    var box = Hive.box('flutter_notes_app');
 
-    List<String> savedNoteList =
-        state.map((note) => json.encode(note.toMap())).toList();
-    prefs.setStringList('note_list', savedNoteList);
+    List<String> savedNoteList = state.map((note) => json.encode(note.toMap())).toList();
+    await box.put('notes', savedNoteList);
   }
 
   /// Loads all [Note] (s) from note list stored within the device.
   Future<void> loadData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var box = Hive.box('flutter_notes_app');
 
     /// Removes all [Note] (s) from device.
-    // prefs.remove('note_list');
+    // box.delete('notes');
 
-    List<String> savedNoteList = prefs.getStringList('note_list')!;
-    state =
-        savedNoteList.map((note) => Note.fromMap(json.decode(note))).toList();
+    List<String> savedNoteList = box.get('notes', defaultValue: <String>[]);
+    state = savedNoteList.map((note) => Note.fromMap(json.decode(note))).toList();
   }
 
   /// Sorts note list by dateOfLastEdit. The [Note] with the most recent dateOfLastEdit
   /// will be the first [Note] in the note list.
-  Future<void> sortList() async {
-    state = [
-      ...state..sort((a, b) => b.lastEditDate!.compareTo(a.lastEditDate!))
-    ];
+  void sortList() {
+    state = [...state..sort((a, b) => b.lastEditDate!.compareTo(a.lastEditDate!))];
   }
 
   /// Creates custom string for dateTime elements.
@@ -85,8 +81,7 @@ class NoteRepository extends StateNotifier<List<Note>> {
       // Creates format like: 12:35 PM,
       var todayFormat = DateFormat("h:mm a");
       dateString += todayFormat.format(dtInLocal);
-    } else if ((diff.inDays) == 1 ||
-        (diff.inSeconds < 86400 && now.day != dtInLocal.day)) {
+    } else if ((diff.inDays) == 1 || (diff.inSeconds < 86400 && now.day != dtInLocal.day)) {
       dateString += "Yesterday";
     } else {
       var monthYearFormat = DateFormat("M/d/y");
