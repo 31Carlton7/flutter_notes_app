@@ -23,18 +23,24 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  # UI
   canton_design_system:
     git:
-      url: git://github.com/31Carlton7/canton_design_system.git
+      url: https://github.com/31Carlton7/canton_design_system.git
       ref: master
-  persistent_bottom_nav_bar:
+  cupertino_icons: ^1.0.2
+
+  # Storage
+  hive: ^2.0.4
+  hive_flutter: ^1.1.0
   shared_preferences:
-  intl:
-  flutter_slidable:
+
+  # Other
+  intl: ^0.17.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
 
 dev_dependencies:
   flutter_test:
