@@ -1,8 +1,4 @@
 import 'package:canton_design_system/canton_design_system.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:notes_app/src/models/note.dart';
-import 'package:notes_app/src/repositories/note_repository.dart';
-import 'package:notes_app/src/ui/providers/note_provider.dart';
 import 'package:notes_app/src/ui/views/profile_view/components/date_of_first_note_card.dart';
 import 'package:notes_app/src/ui/views/profile_view/components/profile_view_header.dart';
 import 'package:notes_app/src/ui/views/profile_view/components/total_characters_typed_card.dart';
