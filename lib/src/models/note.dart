@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-// ignore: import_of_legacy_library_into_null_safe
 import 'package:canton_design_system/canton_design_system.dart';
 import 'package:flutter/foundation.dart';
 
