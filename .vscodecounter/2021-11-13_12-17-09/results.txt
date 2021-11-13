@@ -1,0 +1,116 @@
+Date : 2021-11-13 12:17:09
+Directory : /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app
+Total : 46 files,  1819 codes, 122 comments, 244 blanks, all 2185 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| Dart       |         25 |      1,326 |         30 |        175 |      1,531 |
+| JSON       |          2 |        145 |          0 |          2 |        147 |
+| XML        |          9 |        125 |         51 |         11 |        187 |
+| Markdown   |          2 |         98 |          0 |         15 |        113 |
+| Groovy     |          3 |         81 |          3 |         20 |        104 |
+| YAML       |          1 |         23 |         37 |         16 |         76 |
+| Swift      |          1 |         12 |          0 |          2 |         14 |
+| Properties |          2 |          8 |          1 |          2 |         11 |
+| C++        |          1 |          1 |          0 |          1 |          2 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                                                   | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                                                      |         46 |      1,819 |        122 |        244 |      2,185 |
+| android                                                                                                                                                |         12 |        153 |         53 |         31 |        237 |
+| android/app                                                                                                                                            |          8 |        110 |         52 |         20 |        182 |
+| android/app/src                                                                                                                                        |          7 |         64 |         49 |          9 |        122 |
+| android/app/src/debug                                                                                                                                  |          1 |          4 |          3 |          1 |          8 |
+| android/app/src/main                                                                                                                                   |          5 |         56 |         43 |          7 |        106 |
+| android/app/src/main/res                                                                                                                               |          4 |         26 |         32 |          6 |         64 |
+| android/app/src/main/res/drawable                                                                                                                      |          1 |          4 |          7 |          2 |         13 |
+| android/app/src/main/res/drawable-v21                                                                                                                  |          1 |          4 |          7 |          2 |         13 |
+| android/app/src/main/res/values                                                                                                                        |          1 |          9 |          9 |          1 |         19 |
+| android/app/src/main/res/values-night                                                                                                                  |          1 |          9 |          9 |          1 |         19 |
+| android/app/src/profile                                                                                                                                |          1 |          4 |          3 |          1 |          8 |
+| android/gradle                                                                                                                                         |          1 |          5 |          1 |          1 |          7 |
+| android/gradle/wrapper                                                                                                                                 |          1 |          5 |          1 |          1 |          7 |
+| ios                                                                                                                                                    |          7 |        222 |          2 |          9 |        233 |
+| ios/Runner                                                                                                                                             |          7 |        222 |          2 |          9 |        233 |
+| ios/Runner/Assets.xcassets                                                                                                                             |          3 |        148 |          0 |          4 |        152 |
+| ios/Runner/Assets.xcassets/AppIcon.appiconset                                                                                                          |          1 |        122 |          0 |          1 |        123 |
+| ios/Runner/Assets.xcassets/LaunchImage.imageset                                                                                                        |          2 |         26 |          0 |          3 |         29 |
+| ios/Runner/Base.lproj                                                                                                                                  |          2 |         61 |          2 |          2 |         65 |
+| lib                                                                                                                                                    |         25 |      1,326 |         30 |        175 |      1,531 |
+| lib/src                                                                                                                                                |         24 |      1,298 |         30 |        169 |      1,497 |
+| lib/src/config                                                                                                                                         |          1 |          1 |          1 |          1 |          3 |
+| lib/src/models                                                                                                                                         |          1 |         98 |          0 |         13 |        111 |
+| lib/src/repositories                                                                                                                                   |          1 |         67 |         11 |         15 |         93 |
+| lib/src/ui                                                                                                                                             |         21 |      1,132 |         18 |        140 |      1,290 |
+| lib/src/ui/components                                                                                                                                  |          2 |        260 |         12 |         23 |        295 |
+| lib/src/ui/functions                                                                                                                                   |          2 |         69 |          0 |          8 |         77 |
+| lib/src/ui/functions/note_card_functions                                                                                                               |          2 |         69 |          0 |          8 |         77 |
+| lib/src/ui/providers                                                                                                                                   |          1 |          6 |          0 |          2 |          8 |
+| lib/src/ui/views                                                                                                                                       |         16 |        797 |          6 |        107 |        910 |
+| lib/src/ui/views/home_view                                                                                                                             |          3 |        189 |          0 |         30 |        219 |
+| lib/src/ui/views/home_view/components                                                                                                                  |          2 |         61 |          0 |          8 |         69 |
+| lib/src/ui/views/note_creation_view                                                                                                                    |          5 |        237 |          6 |         34 |        277 |
+| lib/src/ui/views/note_creation_view/components                                                                                                         |          4 |        144 |          0 |         21 |        165 |
+| lib/src/ui/views/profile_view                                                                                                                          |          6 |        245 |          0 |         22 |        267 |
+| lib/src/ui/views/profile_view/components                                                                                                               |          5 |        201 |          0 |         18 |        219 |
+| lib/src/ui/views/tag_view                                                                                                                              |          2 |        126 |          0 |         21 |        147 |
+| lib/src/ui/views/tag_view/components                                                                                                                   |          1 |         27 |          0 |          4 |         31 |
++--------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                                                               | language   | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/README.md                                                                     | Markdown   |         95 |          0 |         13 |        108 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/android/app/build.gradle                                                      | Groovy     |         46 |          3 |         11 |         60 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/android/app/src/debug/AndroidManifest.xml                                     | XML        |          4 |          3 |          1 |          8 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/android/app/src/main/AndroidManifest.xml                                      | XML        |         30 |         11 |          1 |         42 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/android/app/src/main/res/drawable-v21/launch_background.xml                   | XML        |          4 |          7 |          2 |         13 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/android/app/src/main/res/drawable/launch_background.xml                       | XML        |          4 |          7 |          2 |         13 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/android/app/src/main/res/values-night/styles.xml                              | XML        |          9 |          9 |          1 |         19 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/android/app/src/main/res/values/styles.xml                                    | XML        |          9 |          9 |          1 |         19 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/android/app/src/profile/AndroidManifest.xml                                   | XML        |          4 |          3 |          1 |          8 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/android/build.gradle                                                          | Groovy     |         27 |          0 |          5 |         32 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/android/gradle.properties                                                     | Properties |          3 |          0 |          1 |          4 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/android/gradle/wrapper/gradle-wrapper.properties                              | Properties |          5 |          1 |          1 |          7 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/android/settings.gradle                                                       | Groovy     |          8 |          0 |          4 |         12 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/ios/Runner/AppDelegate.swift                                                  | Swift      |         12 |          0 |          2 |         14 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json                   | JSON       |        122 |          0 |          1 |        123 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json                 | JSON       |         23 |          0 |          1 |         24 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md                     | Markdown   |          3 |          0 |          2 |          5 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/ios/Runner/Base.lproj/LaunchScreen.storyboard                                 | XML        |         36 |          1 |          1 |         38 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/ios/Runner/Base.lproj/Main.storyboard                                         | XML        |         25 |          1 |          1 |         27 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/ios/Runner/Runner-Bridging-Header.h                                           | C++        |          1 |          0 |          1 |          2 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/main.dart                                                                 | Dart       |         28 |          0 |          6 |         34 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/src/config/constants.dart                                                 | Dart       |          1 |          1 |          1 |          3 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/src/models/note.dart                                                      | Dart       |         98 |          0 |         13 |        111 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/src/repositories/note_repository.dart                                     | Dart       |         67 |         11 |         15 |         93 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/src/ui/components/note_card.dart                                          | Dart       |        210 |         12 |         19 |        241 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/src/ui/components/search_bar.dart                                         | Dart       |         50 |          0 |          4 |         54 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/src/ui/functions/note_card_functions/delete_note_action.dart              | Dart       |         34 |          0 |          4 |         38 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/src/ui/functions/note_card_functions/pin_note_action.dart                 | Dart       |         35 |          0 |          4 |         39 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/src/ui/providers/note_provider.dart                                       | Dart       |          6 |          0 |          2 |          8 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/src/ui/views/home_view/components/home_view_header.dart                   | Dart       |         37 |          0 |          4 |         41 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/src/ui/views/home_view/components/tag_card.dart                           | Dart       |         24 |          0 |          4 |         28 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/src/ui/views/home_view/home_view.dart                                     | Dart       |        128 |          0 |         22 |        150 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/src/ui/views/note_creation_view/components/content_text_field.dart        | Dart       |         39 |          0 |          5 |         44 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/src/ui/views/note_creation_view/components/note_creation_view_header.dart | Dart       |         19 |          0 |          4 |         23 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/src/ui/views/note_creation_view/components/tag_text_field.dart            | Dart       |         45 |          0 |          7 |         52 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/src/ui/views/note_creation_view/components/title_text_field.dart          | Dart       |         41 |          0 |          5 |         46 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/src/ui/views/note_creation_view/note_creation_view.dart                   | Dart       |         93 |          6 |         13 |        112 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/src/ui/views/profile_view/components/date_of_first_note_card.dart         | Dart       |         52 |          0 |          6 |         58 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/src/ui/views/profile_view/components/profile_view_header.dart             | Dart       |         24 |          0 |          3 |         27 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/src/ui/views/profile_view/components/total_characters_typed_card.dart     | Dart       |         40 |          0 |          3 |         43 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/src/ui/views/profile_view/components/total_notes_created_card.dart        | Dart       |         40 |          0 |          3 |         43 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/src/ui/views/profile_view/components/total_words_typed_card.dart          | Dart       |         45 |          0 |          3 |         48 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/src/ui/views/profile_view/profile_view.dart                               | Dart       |         44 |          0 |          4 |         48 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/src/ui/views/tag_view/components/tag_view_header.dart                     | Dart       |         27 |          0 |          4 |         31 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/lib/src/ui/views/tag_view/tag_view.dart                                       | Dart       |         99 |          0 |         17 |        116 |
+| /Users/carltonaikins/Desktop/Home/Programming/Flutter/projects/notes_app/pubspec.yaml                                                                  | YAML       |         23 |         37 |         16 |         76 |
+| Total                                                                                                                                                  |            |      1,819 |        122 |        244 |      2,185 |
++--------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
