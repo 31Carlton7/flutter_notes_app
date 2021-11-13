@@ -19,7 +19,7 @@ A clean, and modern note taking app that has a complex ui, entirely built with F
 - _Rich Text Editor/WYSIWYG_: Rich text editor to be incorporated into the note creation functionality.
 - _Firebase Support_: Analytics, Storage and authentication.
 - _Fuchsia OS Support_: Support to run on Google Fuchsia OS.
-- _App Store/Google Play Store_: I plan on releasing this app on both app stores sometime before the end of the summer.
+- _App Store/Google Play Store_: I plan on releasing this app on both app stores at some point in time.
 
 ## Getting Started
 Fork or clone this repository or download the code and navigate to the enclosing folder inside your terminal. Then use this command to run:
@@ -30,10 +30,7 @@ flutter run
 ## Dependencies
 
 - canton_design_system: [Link to repository](https://github.com/31Carlton7/canton_design_system)
-- persistent_bottom_nav_bar:
-- shared_preferences:
-- intl:
-- flutter_slidable:
+- For the full list, see [dependencies](https://github.com/31Carlton7/flutter_notes_app/blob/master/pubspec.yaml)
 
 ## Screenshots
 <table> 
