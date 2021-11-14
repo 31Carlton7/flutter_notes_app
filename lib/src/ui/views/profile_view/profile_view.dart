@@ -1,5 +1,6 @@
 import 'package:canton_design_system/canton_design_system.dart';
 import 'package:notes_app/src/ui/views/profile_view/components/date_of_first_note_card.dart';
+import 'package:notes_app/src/ui/views/profile_view/components/authorisation.dart';
 import 'package:notes_app/src/ui/views/profile_view/components/profile_view_header.dart';
 import 'package:notes_app/src/ui/views/profile_view/components/total_characters_typed_card.dart';
 import 'package:notes_app/src/ui/views/profile_view/components/total_notes_created_card.dart';
@@ -40,6 +41,8 @@ class ProfileView extends StatelessWidget {
           TotalCharactersTypedCard(),
           Divider(),
           DateOfFirstNoteCard(),
+          Divider(),
+          NoteAuthorisation(),
         ],
       ),
     );
