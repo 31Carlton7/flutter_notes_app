@@ -17,7 +17,7 @@ A clean, and modern note taking app that has a complex ui, entirely built with F
 ## Upcoming Features
 - _Lockable Notes_: Notes will be able to be unlocked with Face ID/Touch ID or a 4 digit password(Across all notes).
 - _Rich Text Editor/WYSIWYG_: Rich text editor to be incorporated into the note creation functionality.
-- _Firebase Support_: Analytics, Storage and authentication.
+- _Firebase Support_: Analytics, Crashlytics, Performance.
 - _Fuchsia OS Support_: Support to run on Google Fuchsia OS.
 - _App Store/Google Play Store_: I plan on releasing this app on both app stores at some point in time.
 
