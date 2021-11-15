@@ -1,4 +1,4 @@
-# Notes Ap
+# Notes App
 A clean, and modern note taking app that has a complex ui, entirely built with Flutter. This app is also null safe. Be sure to leave a star 🌟
 
 #### [Screenshots](#screenshots-1)
