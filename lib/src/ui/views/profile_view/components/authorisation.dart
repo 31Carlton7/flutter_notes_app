@@ -1,17 +1,38 @@
 import 'package:canton_design_system/canton_design_system.dart';
 import 'package:notes_app/src/ui/views/profile_view/profile_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:local_auth/local_auth.dart';
 
-class NoteAuthorisation extends StatelessWidget {
-  const NoteAuthorisation({Key? key}) : super(key: key);
+class Authorisation extends StatelessWidget {
+  const Authorisation({Key? key}) : super(key: key);
 
   Future<bool> authStatus() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getBool('auth') == null || prefs.getBool('auth') == false ? false : true;
   }
 
-  void changeAuthStatus() async {
+  void changeAuthStatus(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    try {
+      var localAuth = LocalAuthentication();
+      var authenticate = await localAuth.authenticate(
+        localizedReason: 'Authenticate to access Notes',
+        useErrorDialogs: true,
+        stickyAuth: true,
+      );
+      authenticate
+          ? prefs.getBool('auth') == true
+              ? prefs.setBool('auth', false)
+              : prefs.setBool('auth', true)
+          : ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text("Check device or configured lock"),
+              duration: Duration(seconds: 1),
+            ));
+    } on Exception catch (e) {
+      print(e);
+    }
+
     prefs.getBool('auth') == true ? prefs.setBool('auth', false) : prefs.setBool('auth', true);
   }
 
@@ -34,19 +55,19 @@ class NoteAuthorisation extends StatelessWidget {
               future: authStatus(),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (!snapshot.hasData) {
-                  // while data is loading:
                   return Center(
                     child: CircularProgressIndicator(),
                   );
                 } else {
-                  return snapshot.data == true ? Text(
-                    'Unlock Notes',
-                    style: Theme.of(context).textTheme.headline5,
-                  )
-                  : Text(
-                    'Lock Notes',
-                    style: Theme.of(context).textTheme.headline5,
-                  );
+                  return snapshot.data == true
+                      ? Text(
+                          'Unlock Notes',
+                          style: Theme.of(context).textTheme.headline5,
+                        )
+                      : Text(
+                          'Lock Notes',
+                          style: Theme.of(context).textTheme.headline5,
+                        );
                 }
               },
             ),
@@ -67,7 +88,7 @@ class NoteAuthorisation extends StatelessWidget {
                           content: snapshot.data == true ? Text("Notes is now unlocked") : Text("Notes is now locked"),
                           duration: Duration(seconds: 1),
                         ));
-                        changeAuthStatus();
+                        changeAuthStatus(context);
                         Navigator.pop(context);
                         CantonMethods.viewTransition(context, ProfileView());
                       },

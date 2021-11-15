@@ -42,7 +42,7 @@ class ProfileView extends StatelessWidget {
           Divider(),
           DateOfFirstNoteCard(),
           Divider(),
-          NoteAuthorisation(),
+          Authorisation(),
         ],
       ),
     );

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:canton_design_system/canton_design_system.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,15 +22,19 @@ void main() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
 
   if (prefs.getBool('auth') == true) {
-    await localAuth.authenticate(
-        localizedReason: 'Authenticate to access Notes',
-        useErrorDialogs: true,
-        stickyAuth: true,);
+    var authenticate = await localAuth.authenticate(
+      localizedReason: 'Authenticate to access Notes',
+      useErrorDialogs: true,
+      stickyAuth: true,
+    );
+    if (authenticate == true) {
+      await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown])
+          .then((_) {
+        runApp(ProviderScope(child: MyApp()));
+      });
+    } else
+      exit(0);
   }
-
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then((_) {
-    runApp(ProviderScope(child: MyApp()));
-  });
 }
 
 class MyApp extends StatelessWidget {
