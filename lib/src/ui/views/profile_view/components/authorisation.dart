@@ -17,7 +17,7 @@ class Authorisation extends StatelessWidget {
     try {
       var localAuth = LocalAuthentication();
       var authenticate = await localAuth.authenticate(
-        localizedReason: 'Authenticate to access Notes',
+        localizedReason: 'Authenticate to configure Locking',
         useErrorDialogs: true,
         stickyAuth: true,
       );
@@ -29,11 +29,11 @@ class Authorisation extends StatelessWidget {
               content: Text("Check device or configured lock"),
               duration: Duration(seconds: 1),
             ));
+      Navigator.pop(context);
+      CantonMethods.viewTransition(context, ProfileView());
     } on Exception catch (e) {
       print(e);
     }
-
-    prefs.getBool('auth') == true ? prefs.setBool('auth', false) : prefs.setBool('auth', true);
   }
 
   @override
@@ -89,8 +89,6 @@ class Authorisation extends StatelessWidget {
                           duration: Duration(seconds: 1),
                         ));
                         changeAuthStatus(context);
-                        Navigator.pop(context);
-                        CantonMethods.viewTransition(context, ProfileView());
                       },
                     );
                   }
