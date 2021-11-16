@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:canton_design_system/canton_design_system.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:local_auth/local_auth.dart';
 
 import 'package:notes_app/src/models/note.dart';
 import 'package:notes_app/src/ui/components/search_bar.dart';
@@ -8,6 +11,7 @@ import 'package:notes_app/src/ui/providers/note_provider.dart';
 import 'package:notes_app/src/ui/components/note_card.dart';
 import 'package:notes_app/src/ui/views/home_view/components/home_view_header.dart';
 import 'package:notes_app/src/ui/views/home_view/components/tag_card.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -20,7 +24,24 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     super.initState();
+    _authenticate();
     _getNotes();
+  }
+
+  void _authenticate() async {
+    var localAuth = LocalAuthentication();
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    if (prefs.getBool('auth') == true) {
+      var authenticate = await localAuth.authenticate(
+        localizedReason: 'Authenticate to access Notes',
+        useErrorDialogs: true,
+        stickyAuth: true,
+      );
+      if (authenticate != true) 
+        exit(0);
+    }
   }
 
   void _getNotes() async {
