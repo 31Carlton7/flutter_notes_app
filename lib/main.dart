@@ -1,12 +1,8 @@
-import 'dart:io';
-
 import 'package:canton_design_system/canton_design_system.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:local_auth/local_auth.dart';
 
 import 'package:notes_app/src/config/constants.dart';
 import 'package:notes_app/src/ui/views/home_view/home_view.dart';

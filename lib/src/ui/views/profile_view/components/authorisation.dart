@@ -19,7 +19,7 @@ class Authorisation extends StatelessWidget {
       var authenticate = await localAuth.authenticate(
         localizedReason: 'Authenticate to configure Locking',
         useErrorDialogs: true,
-        stickyAuth: true,
+        // stickyAuth: true,
       );
       authenticate
           ? prefs.getBool('auth') == true

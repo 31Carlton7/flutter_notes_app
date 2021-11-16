@@ -37,7 +37,7 @@ class _HomeViewState extends State<HomeView> {
       var authenticate = await localAuth.authenticate(
         localizedReason: 'Authenticate to access Notes',
         useErrorDialogs: true,
-        stickyAuth: true,
+        // stickyAuth: true,
       );
       if (authenticate != true) 
         exit(0);
