@@ -98,13 +98,13 @@ flutter run
 </table>
 
 ## Featured In
-[FlutterForce - Week 145](https://medium.com/flutterforce/flutterforce-week-145-7d8d88b91f8b)
-[Australia National University: Software Innovation Institute](https://sii.anu.edu.au/projects.html)
-[MadeWithFlutter](https://madewithflutter.net/note/)
-[FlutterAppWorld](http://flutterappworld.com/a-clean-and-modern-note-taking-app-built-with-flutter/)
-[LibHunt](https://www.libhunt.com/r/flutter_notes_app)
-[r/FlutterDev Twitter](https://twitter.com/r_FlutterDev/status/1459214227936354306)
-[FlutterAwesome](https://flutterawesome.com/a-clean-and-modern-note-taking-app-built-with-flutter/)
+- [FlutterForce - Week 145](https://medium.com/flutterforce/flutterforce-week-145-7d8d88b91f8b)
+- [Australia National University: Software Innovation Institute](https://sii.anu.edu.au/projects.html)
+- [MadeWithFlutter](https://madewithflutter.net/note/)
+- [FlutterAppWorld](http://flutterappworld.com/a-clean-and-modern-note-taking-app-built-with-flutter/)
+- [LibHunt](https://www.libhunt.com/r/flutter_notes_app)
+- [r/FlutterDev Twitter](https://twitter.com/r_FlutterDev/status/1459214227936354306)
+- [FlutterAwesome](https://flutterawesome.com/a-clean-and-modern-note-taking-app-built-with-flutter/)
 
 ## Socials
 If you have any questions, you can reach me here:
